@@ -1,3 +1,20 @@
+# 使用
+
+
+```
+后端环境为python=3.10
+
+启动后端：
+pip install -r backend/requirements.txt
+python -m backend.run
+
+# 启动前端
+cd front 
+npm install
+npm run dev
+```
+
+
 # 系统概述
 本Demo是一个轻量级分布式任务调度系统，旨在展示任务提交、分布式调度、资源分配、状态监控和日志流的基本效果。系统采用中心化Master（调度器）+多个Worker节点的架构，使用Python后端（FastAPI + fakeredis模拟Redis）和Vue3前端（Element Plus）。所有任务执行均为模拟（不真实运行command，只生成随机日志行），以确保Demo易演示。核心目标：通过Web界面可视化展示分布式效果，包括资源热力图、任务列表和实时日志。
 系统逻辑闭环：用户新增Worker → 新增任务 → 任务进入Pending（若无资源） → 调度器动态Bin Packing分配 → Worker模拟执行（日志推送） → 任务完成/失败 → 资源释放 → 触发下一次调度。
@@ -67,3 +84,8 @@ Card变灰白，右上角“Offline”，任务不可点击，CPU/GPU进度条0%
 实时性：所有变化通过WebSocket动态更新，无手动刷新。
 失败处理：Failed任务日志保留，抽屉显示全日志（无完成行）。
 整体闭环：用户新增资源/任务 → 调度 → 执行（模拟日志） → 完成/失败 → 资源释放 → 新调度循环，确保系统自洽。
+
+
+
+
+
