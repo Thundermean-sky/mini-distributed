@@ -1,0 +1,144 @@
+/* 全局主题变量 - 科技感深色点缀 */
+:root {
+  --app-bg: #0f1419;
+  --app-sidebar: #161f2b;
+  --app-sidebar-hover: #1e2a38;
+  --app-sidebar-active: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  --app-accent: #0ea5e9;
+  --app-accent-soft: rgba(14, 165, 233, 0.15);
+  --app-header-bg: linear-gradient(90deg, #161f2b 0%, #1e2a38 100%);
+  --app-content-bg: #f1f5f9;
+  --app-card-bg: #ffffff;
+  --app-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --app-card-shadow-hover: 0 12px 40px rgba(14, 165, 233, 0.12);
+  --app-text: #1e293b;
+  --app-text-muted: #64748b;
+  --app-border: #e2e8f0;
+  --app-success: #10b981;
+  --app-warning: #f59e0b;
+  --app-danger: #ef4444;
+  --app-radius: 12px;
+  --app-radius-sm: 8px;
+  --app-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 基础与字体 */
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+#app {
+  height: 100%;
+}
+
+/* 在线状态呼吸动画 */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { opacity: 0.9; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+/* 数字/内容变化时的轻微高亮 */
+@keyframes flash-value {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* 列表项入场 */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 进度条填充过渡 */
+@keyframes bar-fill {
+  from { width: 0; }
+}
+
+/* Element Plus 弹窗/抽屉统一圆角与阴影 */
+.el-dialog {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* 新增任务弹窗：滚动条只在弹窗内（红框区域），不出现屏幕右侧。弹窗可能被 teleport 到 body，故用全局样式 */
+/* 用 :has(.task-dialog-scroll) 保证只要弹窗里是该内容就生效，不依赖 class 挂在哪一层 */
+.el-dialog.app-dialog--tasks,
+.el-overlay .el-dialog.app-dialog--tasks,
+.el-dialog:has(.task-dialog-scroll) {
+  max-height: 88vh !important;
+  margin: 6vh auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.el-dialog.app-dialog--tasks .el-dialog__header,
+.el-overlay .el-dialog.app-dialog--tasks .el-dialog__header,
+.el-dialog:has(.task-dialog-scroll) .el-dialog__header {
+  flex-shrink: 0 !important;
+}
+.el-dialog.app-dialog--tasks .el-dialog__body,
+.el-overlay .el-dialog.app-dialog--tasks .el-dialog__body,
+.el-dialog:has(.task-dialog-scroll) .el-dialog__body {
+  flex: 0 1 auto !important; /* 随内容高度，不撑满 */
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 20px 20px !important;
+}
+.el-dialog.app-dialog--tasks .el-dialog__footer,
+.el-overlay .el-dialog.app-dialog--tasks .el-dialog__footer,
+.el-dialog:has(.task-dialog-scroll) .el-dialog__footer {
+  flex-shrink: 0 !important;
+}
+/* 红框区域：高度随内容，超过 55vh 时在内部滚动，避免下方大块空白 */
+.el-dialog.app-dialog--tasks .task-dialog-scroll,
+.el-overlay .el-dialog.app-dialog--tasks .task-dialog-scroll,
+.el-dialog:has(.task-dialog-scroll) .task-dialog-scroll {
+  max-height: 55vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+/* 遮罩层不滚动，避免整页出现滚动条 */
+.el-overlay:has(.app-dialog--tasks),
+.el-overlay:has(.el-dialog.app-dialog--tasks),
+.el-overlay:has(.task-dialog-scroll) {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+}
+.el-drawer {
+  border-radius: 14px 0 0 14px;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.08);
+}
+.el-drawer__header {
+  margin-bottom: 0;
+}
+
+/* 主内容区动画背景 */
+@keyframes bg-gradient-shift {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1) translate(0, 0);
+  }
+  33% {
+    opacity: 0.5;
+    transform: scale(1.05) translate(2%, -1%);
+  }
+  66% {
+    opacity: 0.45;
+    transform: scale(1.02) translate(-1%, 2%);
+  }
+}
+
+@keyframes bg-mesh-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-2%, -2%) scale(1.02); }
+}
