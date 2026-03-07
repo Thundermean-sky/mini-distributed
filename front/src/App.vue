@@ -190,7 +190,7 @@ async function submitStart() {
     <el-header class="app-header">
       <div class="app-logo">
         <span class="app-logo-icon">◇</span>
-        <span>MeanSky 分布式任务调度</span>
+        <span>MeanSky 分布式任务调度 Demo</span>
       </div>
       <div class="app-actions">
         <el-button class="btn-action" type="success" :icon="VideoPlay" @click="openStartDialog" :disabled="!offlineWorkers.length">
@@ -238,7 +238,7 @@ async function submitStart() {
     </el-container>
 
     <el-footer class="app-footer">
-      轻量级分布式任务调度 Demo · FastAPI + Vue3 + fakeredis
+      轻量级分布式任务调度 Demo · FastAPI + Vue3 + fakeredis Copyright © [2026] [Mean]. All Rights Reserved.
     </el-footer>
 
     <!-- 新增 Worker 弹窗 -->

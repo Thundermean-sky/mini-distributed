@@ -34,4 +34,4 @@ Worker Cards（下方网格，垂直滚动多Worker）：
 # Footer
 
 位置：底部固定。
-内容：可选系统状态（如“Powered by xAI”）。
+内容：可选系统状态。
